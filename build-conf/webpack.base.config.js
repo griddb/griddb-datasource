@@ -53,6 +53,8 @@ module.exports = {
       { from: 'plugin.json' },
       { from: 'partials/*' },
       { from: 'img/*' },
+      { from: '../README.md' },
+      { from: '../QuerySpecialExpression.md' },
     ])
   ],
   resolve: {
