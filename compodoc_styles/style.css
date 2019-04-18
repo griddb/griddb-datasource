@@ -1,0 +1,28 @@
+@import "./reset.css";
+@import "./bootstrap.min.css";
+@import "./bootstrap-card.css";
+@import "./font-awesome.min.css";
+@import "./compodoc.css";
+@import "./prism.css";
+.io-description ol {
+    counter-reset: item;
+    padding-left: 40px;
+}
+.io-description br{
+    display: none;
+}
+.io-description p br{
+    display: block;
+    line-height: 30px;
+}
+.io-description ol li {
+    display: block;
+    position: relative;
+}
+.io-description ol li:before {
+    content: counters(item,".")".";
+    counter-increment: item;
+    position: absolute;
+    margin-right: 100%;
+    right: 10px; /* space between number and text */
+}

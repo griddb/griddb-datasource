@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "module": "none",
+    "target": "es6",
+    "rootDir": "./src",
+    "sourceMap": true
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "e2e",
+    "testing"
+  ]
+}
