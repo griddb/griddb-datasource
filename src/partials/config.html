@@ -1,0 +1,55 @@
+<h3 class="page-heading">GridDB Connection</h3>
+
+<div class="gf-form-group">
+	<div class="gf-form max-width-30">
+		<span class="gf-form-label width-7">Host</span>
+		<input type="text" class="gf-form-input" ng-model='ctrl.current.url' placeholder="http://localhost:8080" bs-typeahead="{{['http://localhost:8080']}}"
+		 required></input>
+		<info-popover mode="right-absolute">
+			Set the URL to GridDB Web API
+		</info-popover>
+	</div>
+
+	<div class="gf-form max-width-30">
+		<span class="gf-form-label width-7">Cluster</span>
+		<input type="text" class="gf-form-input" ng-model='ctrl.current.jsonData.xgridcluster' placeholder="Cluster name"
+		 required></input>
+		<info-popover mode="right-absolute">
+			Set the cluster name
+		</info-popover>
+	</div>
+
+	<div class="gf-form-inline">
+		<div class="gf-form max-width-15">
+			<span class="gf-form-label width-7">User</span>
+			<input type="text" class="gf-form-input" ng-model='ctrl.current.basicAuthUser' placeholder="Username" required></input>
+			<info-popover mode="right-absolute">
+				Set the GridDB user name
+			</info-popover>
+		</div>
+		<div class="gf-form max-width-15">
+			<span class="gf-form-label width-7">Password</span>
+			<input type="password" class="gf-form-input" ng-model='ctrl.current.basicAuthPassword' placeholder="Password"
+			 required></input>
+			<info-popover mode="right-absolute">
+				Set the GridDB password
+			</info-popover>
+		</div>
+	</div>
+</div>
+
+<div class="gf-form-group">
+	<div class="gf-form-inline">
+		<div class="gf-form">
+			<span class="gf-form-label">Min time interval</span>
+			<input type="text" class="gf-form-input width-6" ng-model="ctrl.current.jsonData.minInterval" spellcheck='false'
+			 placeholder="1s"></input>
+			<info-popover mode="right-absolute">
+				This is an optional setting.
+				A lower limit for the time sampling interval. You need to consider the write frequency to set this property.
+				For example if your write frequency is <code>1m</code>, it may not have meaning to do time sampling with <code>1s</code>
+				If not input, no lower limit is used.
+			</info-popover>
+		</div>
+	</div>
+</div>

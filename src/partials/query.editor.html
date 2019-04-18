@@ -1,0 +1,109 @@
+<query-editor-row query-ctrl="ctrl" class="generic-datasource-query-row" has-text-edit-mode="true" can-collapse="true">
+
+  <div ng-if="!ctrl.target.rawQuery">
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword  width-9">Choose container</label>
+        <div class="gf-size-auto">
+          <gf-form-dropdown model="ctrl.target.griddbContainer" get-options="ctrl.griddbContainers" on-change="ctrl.onChangeContainer($option)">
+          </gf-form-dropdown>
+        </div>
+      </div>
+
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-9">Time column</label>
+        <div class="dropdown">
+
+          <gf-form-dropdown model="ctrl.target.griddbTimeColumn" get-options="ctrl.target.griddbTimeCols" on-change="ctrl.onChangeColumn($option)">
+          </gf-form-dropdown>
+        </div>
+      </div>
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-9">View column</label>
+        <div class="gf-form">
+          <div class="dropdown">
+            <value-select-dropdown selectedTags="[]" variable="ctrl.target.griddbViewColDisplayModel" on-updated="ctrl.updateViewCol(ctrl.target.griddbViewColDisplayModel)"></value-select-dropdown>
+          </div>
+        </div>
+      </div>
+
+      <div class="gf-form gf-form--grow ">
+        <div class="gf-form-label gf-form-label--grow "></div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="!ctrl.target.rawQuery">
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-9">CONDITION</label>
+      </div>
+      <div class="gf-form" ng-repeat="segmentWhere in ctrl.griddbWhereSegments">
+        <metric-segment segment="segmentWhere" get-options="ctrl.getWhereOption(segmentWhere, $index)" on-change="ctrl.whereSegmentUpdated(segmentWhere, $index)"></metric-segment>
+      </div>
+
+      <div class="gf-form gf-form--grow ">
+        <div class="gf-form-label gf-form-label--grow "></div>
+      </div>
+    </div>
+
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-9">LIMIT</label>
+        <div class="width-9">
+          <input type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="gf-form-input" ng-model="ctrl.target.griddbLimit"
+            spellcheck='false' placeholder="No Limit" ng-blur="ctrl.refresh()">
+        </div>
+        <label class="gf-form-label query-keyword width-9" ng-if="ctrl.target.griddbLimit">OFFSET</label>
+        <div class="width-9" ng-if="ctrl.target.griddbLimit">
+          <input type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="gf-form-input" ng-model="ctrl.target.griddbOffset"
+            spellcheck='false' placeholder="No Offset" ng-blur="ctrl.refresh()">
+        </div>
+      </div>
+      <div class="gf-form gf-form--grow ">
+        <div class="gf-form-label gf-form-label--grow "></div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="ctrl.target.rawQuery ">
+    <div class="gf-form ">
+      <textarea rows="3 " class="gf-form-input " ng-model="ctrl.target.query " spellcheck="false " placeholder="TQL Query " ng-model-onblur
+        ng-change="ctrl.refresh() "></textarea>
+    </div>
+  </div>
+
+  <div class="gf-form-inline" ng-if="!ctrl.target.rawQuery">
+    <div class="gf-form">
+
+      <label class="gf-form-label query-keyword width-9">TIME SAMPLING</label>
+      <div class="width-9 gf-form-input" style="background-color: #212327;">
+        <input type="checkbox" ng-model="ctrl.target.griddbIsTimeSampling" ng-change="ctrl.refresh()">
+      </div>
+
+      <label class="gf-form-label query-keyword width-9">ALIAS BY</label>
+      <div class="width-15">
+        <input type="text " class="gf-form-input " ng-model="ctrl.target.alias " spellcheck='false' placeholder="Alias name" ng-blur="ctrl.refresh() ">
+      </div>
+
+    </div>
+    <div class="gf-form gf-form--grow ">
+      <div class="gf-form-label gf-form-label--grow "></div>
+    </div>
+  </div>
+
+  <div class="gf-form-inline" ng-if="ctrl.target.rawQuery">
+    <div class="gf-form">
+      <label class="gf-form-label query-keyword width-9">ALIAS BY</label>
+      <div class="width-15">
+        <input type="text " class="gf-form-input " ng-model="ctrl.target.alias " spellcheck='false' placeholder="Alias name" ng-blur="ctrl.refresh() ">
+      </div>
+
+    </div>
+    <div class="gf-form gf-form--grow ">
+      <div class="gf-form-label gf-form-label--grow "></div>
+    </div>
+  </div>
+
+
+</query-editor-row>
