@@ -1,0 +1,78 @@
+<!-- <h5 class="section-heading">Query</h5> -->
+<div class="gf-form-group">
+  <div class="gf-form">
+    <input type="text" class="gf-form-input" ng-model='ctrl.annotation.query' placeholder="select *" required></input>
+    <info-popover mode="right-absolute">
+      <span>Only support TQL Query</span>
+    </info-popover>
+  </div>
+
+  <!-- Check option to use regions annotation -->
+  <div class="gf-form-group">
+    <div class="gf-form-inline">
+      <gf-form-switch class="gf-form" label="Regions events" tooltip="If you use regions events annotation, please check box 'Regions events' and fill both start time and end time
+      input"
+        label-class="width-10" checked="ctrl.annotation.isRegionsAnnotation" switch-class="max-width-6"></gf-form-switch>
+    </div>
+  </div>
+
+  <!-- Choose container -->
+  <div class="gf-form-group">
+    <h5 class="section-heading">Container Information
+      <tip>Input container name and time column to execute TQL query</tip>
+    </h5>
+    <div class="gf-form max-width-30">
+      <span class="gf-form-label width-9">Container name</span>
+      <input type="text" class="gf-form-input" ng-model='ctrl.annotation.container' placeholder="container1" required></input>
+      <info-popover mode="right-absolute">
+        <span>Input container name</span>
+      </info-popover>
+    </div>
+    <!-- Set time column for container -->
+    <div class="gf-form max-width-30">
+      <!-- For normal annotation -->
+      <span class="gf-form-label width-9" ng-if="!ctrl.annotation.isRegionsAnnotation">Time Column</span>
+      <input ng-if="!ctrl.annotation.isRegionsAnnotation" type="text" class="gf-form-input" ng-model='ctrl.annotation.timeColumn'
+        placeholder="Time column name" required></input>
+      <info-popover ng-if="!ctrl.annotation.isRegionsAnnotation" mode="right-absolute">
+        <span>Input time column name</span>
+      </info-popover>
+
+      <!-- For regions annotation -->
+      <!-- Set start time column -->
+      <span class="gf-form-label width-9" ng-if="ctrl.annotation.isRegionsAnnotation">Start time Column</span>
+      <input ng-if="ctrl.annotation.isRegionsAnnotation" type="text" class="gf-form-input" ng-model='ctrl.annotation.startTimeColumn'
+        placeholder="Time column name" required></input>
+      <info-popover ng-if="ctrl.annotation.isRegionsAnnotation" mode="right-absolute">
+        <span>Input start time column name</span>
+      </info-popover>
+    </div>
+
+    <!-- Set end time column -->
+    <div class="gf-form max-width-30" ng-if="ctrl.annotation.isRegionsAnnotation">
+      <span class="gf-form-label width-9">End time Column</span>
+      <input type="text" class="gf-form-input" ng-model='ctrl.annotation.endTimeColumn' placeholder="Time column name"
+        required></input>
+      <info-popover mode="right-absolute">
+        <span>Input end time column name</span>
+      </info-popover>
+    </div>
+  </div>
+
+
+</div>
+<h5 class="section-heading">Field mappings
+  <tip>An annotation event is composed of a title, tags, and an additional text field.</tip>
+</h5>
+<div class="gf-form-group">
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <span class="gf-form-label width-4">Text</span>
+      <input type="text" class="gf-form-input max-width-10" ng-model='ctrl.annotation.textColumn' placeholder=""></input>
+    </div>
+    <div class="gf-form">
+      <span class="gf-form-label width-4">Tags</span>
+      <input type="text" class="gf-form-input max-width-10" ng-model='ctrl.annotation.tagsColumn' placeholder=""></input>
+    </div>
+  </div>
+</div>

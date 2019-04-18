@@ -1,0 +1,34 @@
+{
+  "type": "datasource",
+  "name": "GridDB",
+  "id": "griddb-datasource",
+  "metrics": true,
+  "annotations": true,
+  "info": {
+    "description": "GridDB Data Source for Grafana",
+    "author": {
+      "name": "TOSHIBA Digital Solutions Corporation",
+      "url": "https://github.com/griddb/"
+    },
+    "keywords": [
+      "grafana",
+      "datasource",
+      "plugin",
+      "griddb",
+      "typescript",
+      "webpack"
+    ],
+    "logos": {
+      "small": "img/griddb_icon.png",
+      "large": "img/griddb_icon.png"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2019-04-18"
+  },
+  "dependencies": {
+    "grafanaVersion": "5.3.4",
+    "plugins": []
+  }
+}
