@@ -2,32 +2,32 @@ GridDB Data Source for Grafana
 
 ## Overview
 
-This Plugin will be used to get data from GridDB and display as graph or table base on [Grafana platform](https://grafana.com/).
+This Plugin is used to get data from GridDB and display as graph or table base on [Grafana](https://github.com/grafana/grafana).
 
 ## Operating environment
 
 Building of the plugin and execution have been checked in the following environment.
-
-    OS: CentOS 7.4(x64)
-    GridDB Server and Java Client: 4.1 CE
-    GridDB WebAPI: 2.0
+- OS: CentOS 7.4(x64)
+- [GridDB Server and Java Client](https://github.com/griddb/griddb_nosql): 4.1 CE
+- [GridDB WebAPI](https://github.com/griddb/webapi): 2.0
+- [Grafana](https://github.com/grafana/grafana): 5.3.4
 
 ## QuickStart
-
-### How to build
-
-Go to source include file package.json and run the command below:
-
-    $ npm install -g yarn
-    $ yarn install
-    $ yarn build
 
 ### How to installation
 
 1. Go to $GRAFANA_HOME/data/plugins, create a new folder "GridDB-plugin"
     + Note: This folder is created after run Grafana server the first time.
-2. Build GridDB plugin source code, copy folder "dist" to folder "GridDB-plugin"
+2. Copy folder "dist" to folder "GridDB-plugin"
 3. Restart your Grafana server 
+
+Note: The folder "dist" includes files created by building with the following method.
+
+    Go to source include file package.json and run the command below:
+
+        $ npm install -g yarn
+        $ yarn install
+        $ yarn build
 
 ### How to use
 
@@ -41,7 +41,7 @@ Go to source include file package.json and run the command below:
 
 |Name|Description|
 |---|---|
-|Name|Datasource name|
+|Name|Data Source name|
 |Host|URL to GridDB WebAPI|
 |Cluster|Cluster name|
 |User|GridDB user name|
