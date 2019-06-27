@@ -26,7 +26,7 @@ export const GridDBConstant = {
     // Grafana data format
     FORMAT: {
         table: 'table',
-        timeSeries: 'time-series',
+        timeSeries: 'time_series',
     },
     NUMBER_TYPE_GRIDDB: {
         byte: 'BYTE',

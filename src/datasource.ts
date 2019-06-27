@@ -246,7 +246,7 @@ export class Datasource {
           }
           throw {
             message: message,
-            data: err.data,
+            data: 'string',
             config: err.config,
           };
 
@@ -471,7 +471,7 @@ export class Datasource {
 
       throw {
         message: message,
-        data: err.data,
+        data: 'string',
         config: err.config,
       };
     });
@@ -541,7 +541,7 @@ export class Datasource {
         }
         throw {
           message: message,
-          data: err.data,
+          data: 'string',
           config: err.config,
         };
       });
