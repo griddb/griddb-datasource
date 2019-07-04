@@ -7,10 +7,10 @@ This Plugin is used to get data from GridDB and display as graph or table base o
 ## Operating environment
 
 Building of the plugin and execution have been checked in the following environment.
-- OS: CentOS 7.4(x64)
-- [GridDB Server and Java Client](https://github.com/griddb/griddb_nosql): 4.1 CE
+- OS: CentOS 7.6(x64)
+- [GridDB Server and Java Client](https://github.com/griddb/griddb_nosql): 4.2
 - [GridDB WebAPI](https://github.com/griddb/webapi): 2.0
-- [Grafana](https://github.com/grafana/grafana): 5.3.4
+- [Grafana](https://github.com/grafana/grafana): 6.2
 
 ## QuickStart
 
