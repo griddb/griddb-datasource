@@ -127,9 +127,9 @@ export class DataQueryCtrl extends QueryCtrl {
     this.target.query = this.target.query || 'SELECT *';
     this.target.rawQuery = this.target.rawQuery || false;
     if (this.panelCtrl.panel.type === 'table') {
-      this.target.format = 'table';
+      this.target.format = GridDBConstant.FORMAT.table;
     } else {
-      this.target.format = 'time-series';
+      this.target.format = GridDBConstant.FORMAT.timeSeries;
     }
 
     this.getGriDBVariable();
@@ -188,9 +188,9 @@ export class DataQueryCtrl extends QueryCtrl {
     }
     this.target.rawQuery = !this.target.rawQuery;
     if (this.panelCtrl.panel.type === 'table') {
-      this.target.format = 'table';
+      this.target.format = GridDBConstant.FORMAT.table;
     } else {
-      this.target.format = 'time-series';
+      this.target.format = GridDBConstant.FORMAT.timeSeries;
     }
   }
 
