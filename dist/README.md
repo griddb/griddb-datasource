@@ -31,6 +31,10 @@ Note: The folder "dist" includes files created by building with the following me
 
 ### How to use
 
+Please refer to [User Guide](https://github.com/griddb/griddb-datasource/blob/master/docs/UserGuide.md).
+
+The summary is as below:
+
 #### Adding the data source
 
 1. Open the side menu by clicking the Grafana icon in the top header.
