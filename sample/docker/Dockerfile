@@ -1,8 +1,6 @@
 FROM node:8.16
 
-WORKDIR /
-
-RUN git clone https://github.com/griddb/griddb-datasource.git && \
+RUN git clone https://github.com/griddb/griddb-datasource && \
     cd griddb-datasource && \
     npm install -g yarn && \
     yarn install && \

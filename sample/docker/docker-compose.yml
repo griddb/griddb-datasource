@@ -1,0 +1,16 @@
+version: '3'
+services:
+  grafana_plugin:
+    build:
+      dockerfile: Dockerfile
+    container_name: grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - griddb_webapi
+  griddb_webapi:
+    build:
+      dockerfile: Dockerfile.griddb
+    container_name: griddb_webapi
+    ports:
+      - 8080:8080
