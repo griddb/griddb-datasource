@@ -1,0 +1,44 @@
+FROM centos:7
+
+ENV GRIDDB_VERSION 4.2.1
+ENV DOWNLOAD_URL=https://github.com/griddb/griddb_nosql/releases/download/v${GRIDDB_VERSION}/griddb_nosql-${GRIDDB_VERSION}-1.linux.x86_64.rpm
+ENV CLUSTER_NAME test
+ENV GRIDDB_ADMIN_PASSWORD admin
+ENV GS_HOME /var/lib/gridstore
+ENV GS_LOG $GS_HOME/log
+
+RUN yum install -y curl python git maven vim openjdk-8-jdk-headless
+
+# Install GridDB
+RUN curl ${DOWNLOAD_URL} --output griddb_nosql.linux.x86_64.rpm --silent --location && \
+    rpm -ivh griddb_nosql.linux.x86_64.rpm && \
+# Setup password
+    gs_passwd admin -p ${GRIDDB_ADMIN_PASSWORD} && \
+# Set up cluster name
+    sed -i -e s/\"clusterName\":\"\"/\"clusterName\":\"${CLUSTER_NAME}\"/g \
+        /var/lib/gridstore/conf/gs_cluster.json && \
+    chown -R gsadm:gridstore $GS_HOME
+
+# Build WebAPI
+RUN git clone https://github.com/griddb/webapi.git && \
+    cp /usr/griddb-${GRIDDB_VERSION}/bin/gridstore-${GRIDDB_VERSION}.jar /webapi/lib/gridstore.jar && \
+    sed -i -e 's|^adminHome=.*|adminHome=${GRIDDB_WEBAPI_HOME:/var/lib/gridstore/webapi}|' \
+        /webapi/webapi-ce/src/main/resources/application.properties && \
+    sed -i -e 's/"name".*/"name": "'$CLUSTER_NAME'",/' /webapi/conf/repository.json && \
+    cd /webapi/webapi-ce && \
+    ./gradlew build -x test --stacktrace
+
+# Build sample data inserting tool
+RUN git clone https://github.com/griddb/griddb-datasource && \
+    sed -i -e "s/^clusterName=.*/clusterName=$CLUSTER_NAME/" \
+        /griddb-datasource/sample/SampleData/src/main/resources/griddb.properties && \
+    cd /griddb-datasource/sample/SampleData && \
+    mvn package
+
+# More setup
+ADD start.sh /start.sh
+RUN chmod +x /start.sh
+
+EXPOSE 8080
+
+CMD ["/start.sh"]
